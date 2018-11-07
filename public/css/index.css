@@ -1,0 +1,61 @@
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #fafafa;
+    padding: 0;
+    max-height: 80%;
+    width: 65%;
+    margin: auto;
+    overflow-y: auto;
+    border-radius: 2px;
+    will-change: top, opacity;
+}  
+
+.header{
+    background-color: black;
+    color: white;
+    font-size: medium;
+    height: 50px;
+    padding-top: 1px; 
+    padding-bottom: 1px; 
+}
+
+.logo{
+    height: 120px;
+}
+nav .nav-wrapper {
+    position: relative;
+    height: 100%;
+    margin-left: 35%;
+}
+
+.btn{
+    background: gray;
+}
+
+.sticky-nav{
+    position:fixed;
+    top:0;
+}
+
+#navbar{
+    background:white;
+}
+
+footer{
+    background: gray;
+    padding: 20px;
+
+}
+
+h1{
+    font-family: "Lora", serif ;
+    font-size: 40px;
+}
+
+h5{
+    font-weight: bold;
+    font-size: 20px;
+}
