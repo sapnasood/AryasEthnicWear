@@ -4,7 +4,6 @@ $(document).ready(function(){
     $('.dropdown-trigger').dropdown();
     $('#modal1').modal();
     $('select').formSelect();
-    // $('.add_cart').on('click', addToCart); 
    });
 
 // This function will pass the department selected by user to getProds function
@@ -15,7 +14,9 @@ $(document).ready(function(){
     getProds($(this).text(), '/api/category/');
    };
 
+// -----------------------------------------------------------------------------------------
 //  This function makes an ajax Get call to fetch all the items for a selected category  
+// ------------------------------------------------------------------------------------------
    const getProds = function(category, apiurl){
     $.ajax(
     {
@@ -30,7 +31,9 @@ $(document).ready(function(){
        
     });
     };
+// ----------------------------------------------------------------------------------------------------    
 // This function will dynamically create cards on html page and load the data  
+// ----------------------------------------------------------------------------------------------------
     const loadProducts = function(response){
         //    $('#footerSec').empty();
            $('#mainDiv').empty();
@@ -51,7 +54,7 @@ $(document).ready(function(){
            cardImg.append(image);
            
            let cardCon = $('<div>').addClass('card-content');
-           
+// Logic to find if product is In stock or Out of Stock           
            if (parseInt(item.stock_quantity) > 0){
                quantity = 'In Stock'
            } 
@@ -87,9 +90,6 @@ $(document).ready(function(){
         
            })
    
-        // else{
-        //   prodLink.addClass('disabled');
-        // };
            cardAction.append(prodLink);
            cardDiv.append(cardImg, cardCon, cardAction);
            col.append(cardDiv);
@@ -109,18 +109,23 @@ $(document).ready(function(){
             $('#modalImg').attr('src', productresp.product_img);
             $('#modalImg').attr('width', '400px');
             $('#modalImg').attr('height', '350px');
-            $('#productName').text(productresp.product_name);
+            $('#productName').text((productresp.product_name).toUpperCase()) ;
             $('#prodid').text(`Product Code: ${productresp.id}`);
             $('.add_cart').attr('data-id',productresp.id);
-            // $('.add_cart').on('click', addToCart);
             };
 
+// ---------------------------------------------------------------------------------------------------------------
+// This function is used to search products by Productname 
+// ----------------------------------------------------------------------------------------------------------------
     const selectProductName = function(event){
     event.preventDefault();
     console.log($(this).text());
     getProds($(this).text(), '/api/category/productname/');
    };
 
+// ----------------------------------------------------------------------------------------------------------------   
+//    This function is used to add the selected products to a cart
+// -----------------------------------------------------------------------------------------------------------------   
             const addToCart = function(event){
                 
                 event.preventDefault();
@@ -128,8 +133,6 @@ $(document).ready(function(){
                 let size = $('#size').val();
                 console.log(quant);
                 console.log(size);
-                // console.log($('#prodid').innerHTML);
-                // let productId = $('#prodid').innerHTML;
                 let productId = $(this).attr('data-id');
                 console.log(productId);
                 $('#modal1').modal('close');
@@ -140,11 +143,13 @@ $(document).ready(function(){
                     }).then(function(productData){
                         console.log('Result from prod')
                         console.log(productData)
-                // Push the data into cart table   
+// Push the data into cart table   
                   pushToCart(productData, quant, size);
                     })
                 };
-
+// -----------------------------------------------------------------------------------------------------
+// Function to push the data into Cart table in DB  
+// ------------------------------------------------------------------------------------------------------              
                 const pushToCart = function(productDatas, quant, size){
                     let productId = productDatas.id;
                     console.log(productId);
@@ -164,7 +169,9 @@ $(document).ready(function(){
                     })
                     
                     };
- 
+// ---------------------------------------------------------------------------------------------------------------                    
+// This function will create the HTML table componenet to show all the items selected by user to purchase 
+// ------------------------------------------------------------------------------------------------------------------
                     const getCart = function(event){
                         event.preventDefault();
                         
@@ -180,7 +187,7 @@ $(document).ready(function(){
                                 $('#mainDiv').append(header);
                                 let row = $('<div>').addClass('row');
                                 let col1 = $('<div>').addClass('col m6');
-                    // Create a table header
+ // Create a table header
                                 let table = $('<table>').addClass('table table table-shopping-cart');
                                 table.attr('id','table');
                                 let thead = $('<thead>');
@@ -197,7 +204,7 @@ $(document).ready(function(){
                                 col1.append(table);
                                 row.append(col1);
                                 
-                    // Create table body  
+// Create table body  
                     let tbody = $('<tbody>');
                     
                     for(let i = 0; i < productData.length; i++){
@@ -209,24 +216,24 @@ $(document).ready(function(){
                         let td4 = $('<td>');
                         let td5 = $('<td>');
                         let td6 = $('<td>');
-                    // Logic to display ProductID    
+// Logic to display ProductID    
                     let prodId = productData[i].id;
                     td6.append(prodId);
                     tr1.append(td6);
-                    //  Logic to display product image
+//  Logic to display product image
                         let product_img = productData[i].Product.product_img;
                         let prdImg = $('<img>').attr('src', product_img);
                         prdImg.attr('width', '100px');
                         prdImg.attr('height', '110px');
                         td1.append(prdImg);
                         tr1.append(td1);
-                    // Logic to display product name   
+// Logic to display product name   
                         let product_name = productData[i].Product.product_name;
                         td2.append(product_name);
                         tr1.append(td2);  
-                    // Logic to display product quantity  
+// Logic to display product quantity  
                     let quantity =   productData[i].product_quant;
-                    // Logic to display products proce
+// Logic to display products proce
                     td3.append(quantity);
                     tr1.append(td3);  
                     if(productData[i].Product.product_type === 'buy'){
@@ -237,8 +244,8 @@ $(document).ready(function(){
                     td4.append(price);
                     tr1.append(td4); 
                     tbody.append(tr1);
-                    
-                    // Add remove icon 
+              
+// Add remove button 
                     removeBtn = $(`<a class="waves-effect waves-teal btn-flat" id="remove">`);
                     removeBtn.text("Remove");
                     removeBtn.on('click',function(event){
@@ -257,7 +264,7 @@ $(document).ready(function(){
                           console.log('subtotal' + subtotal);
                           subTotal.text(`SUBTOTAL: $ ${subtotal}`);
                           table.deleteRow(index);
-                    // Make ajax call to delete the row from Cart table in database   
+// Make ajax call to delete the row from Cart table in database   
                     console.log(deleteId);   
                     $.ajax(
                         {url:`/api/cart/delete/${deleteId}`,
@@ -287,7 +294,9 @@ $(document).ready(function(){
                     
                     let checkOutBtn = $(`<a class="waves-effect waves-light btn" id="checkout">`)
                     checkOutBtn.text('CHECKOUT')
-                    
+// --------------------------------------------------------------------------------------------------------                    
+// This function will update the quantity in Products table 
+// ---------------------------------------------------------------------------------------------------------                   
                     checkOutBtn.on('click',function(event){
                             event.preventDefault();
                      $.ajax(

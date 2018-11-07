@@ -2,7 +2,7 @@ const db = require('../models');
 
 const items = [
     {
-      product_name: "anarkalis",
+      product_name: "anarkali",
       product_img: "https://cdn.shopify.com/s/files/1/1384/4105/products/wonderful-taupe-net-long-embroidered-lehenga_800x_a84eab96-131d-42b6-b9c0-5d3f0f4862df_1024x1024.jpg?v=1483096212",
       category: "clothing",
       rental_price: 45,
@@ -11,26 +11,26 @@ const items = [
       product_type: 'buy'
       }, 
 
-     { product_name: "anarkalis",
+     { product_name: "anarkali",
       product_img: "http://fashionclozet.com/image/cache/catalog/Suits/A_December/7_Maisha_3/5105-800x1100.jpg",
       category: "clothing",
       rental_price: 35,
       retail_price: 230,
-      stock_quantity: 10,
+      stock_quantity: 5,
       product_type: 'buy'
       }, 
 
-      { product_name: "sari",
+      { product_name: "saree",
       product_img: "https://salwarweb.com/image/cache/data/satin-wedding-wear-orange-heavy-embroidery-work-saree-507-800x1100.jpg",
       category: "clothing",
       rental_price: 25,
       retail_price: 330,
-      stock_quantity: 10,
+      stock_quantity: 2,
       product_type: 'buy'
       }, 
 
 
-      { product_name: "sari",
+      { product_name: "saree",
       product_img: "http://sc02.alicdn.com/kf/UT8SyN7XZ4XXXagOFbXX/2017-new-design-Heavy-Silk-Half-Fancy.jpg",
       category: "clothing",
       rental_price: 25,
@@ -39,7 +39,7 @@ const items = [
       product_type: 'buy'
       }, 
 
-      { product_name: "lehengas",
+      { product_name: "lehenga",
       product_img: "https://www.natashacouture.com/blog/wp-content/uploads/2018/02/11.jpg",
       category: "clothing",
       rental_price: 25,
@@ -48,7 +48,7 @@ const items = [
       product_type: 'buy'
       }, 
 
-      { product_name: "lehengas",
+      { product_name: "lehenga",
       product_img: "https://i.pinimg.com/originals/87/f8/f0/87f8f0d8c527fa284bc7cfffb3de641b.jpg",
       category: "clothing",
       rental_price: 25,
@@ -98,7 +98,7 @@ const items = [
 product_img: "https://www.bollywoodshake.com/uploads/2/1/9/6/2196600/img-1407_orig.jpg",
 category: "rental",
 rental_price: 25,
-retail_price: 330,
+retail_price: 25,
 stock_quantity: 10,
 product_type: 'rental'
 },  
@@ -107,7 +107,7 @@ product_type: 'rental'
 product_img: "https://www.bollywoodshake.com/uploads/2/1/9/6/2196600/__3647467_orig.jpg",
 category: "rental",
 rental_price: 25,
-retail_price: 330,
+retail_price: 30,
 stock_quantity: 10,
 product_type: 'rental'
 },  
@@ -115,8 +115,8 @@ product_type: 'rental'
 { product_name: "Garba Lehenga",
 product_img: "https://www.bollywoodshake.com/uploads/2/1/9/6/2196600/img-0884_orig.jpg",
 category: "rental",
-rental_price: 25,
-retail_price: 330,
+rental_price: 20,
+retail_price: 20,
 stock_quantity: 10,
 product_type: 'rental'
 },  
@@ -124,8 +124,8 @@ product_type: 'rental'
 { product_name: "Blue Nimbooda Lehenga",
 product_img: "https://www.bollywoodshake.com/uploads/2/1/9/6/2196600/____7064360_orig.jpg",
 category: "rental",
-rental_price: 25,
-retail_price: 330,
+rental_price: 35,
+retail_price: 35,
 stock_quantity: 10,
 product_type: 'rental'
 }, 
@@ -134,7 +134,7 @@ product_type: 'rental'
 product_img: "http://www.rhythmaya.com/wp-content/uploads/2014/04/007-FuschiaTops-150x150.jpg",
 category: "rental",
 rental_price: 25,
-retail_price: 330,
+retail_price: 25,
 stock_quantity: 10,
 product_type: 'rental'
 },
